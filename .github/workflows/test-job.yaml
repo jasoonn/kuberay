@@ -385,9 +385,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Python Client Test
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
       - name: Install package and run unittest for Python client
         working-directory: ./ray-operator/clients/python-client
         run: |
           pip install -e .
-          python3 -m unittest discover 'python_client_test/'
+          python -m unittest discover 'python_client_test/'
       
